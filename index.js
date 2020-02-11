@@ -8,15 +8,15 @@ async function run () {
     const client = new github.GitHub(token)
     console.log(123)
 
-    const issueNumber = getIssueNumber()
-    console.log(issueNumber)
-    if (issueNumber == null) {
+    const issue_number = getIssueNumber()
+    console.log(issue_number)
+    if (issue_number == null) {
       throw new Error('No Issue Provided')
     }
 
     const { data } = await client.issues.get({
       ...getRepo(),
-      issueNumber
+      issue_number
     })
     console.log(data)
   } catch (error) {
