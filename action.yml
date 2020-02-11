@@ -1,0 +1,9 @@
+name: 'Open Quiz Actions'
+description: ''
+author: 'Leplay'
+inputs:
+  github-token:
+    description: 'The GITHUB_TOKEN secret'
+runs:
+  using: 'node12'
+  main: 'index.js'
