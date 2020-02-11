@@ -7,6 +7,6 @@ jobs:
   triage:
     runs-on: ubuntu-latest
     steps:
-    - uses: openquiz/openquiz-actions@v1
+    - uses: ./
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"

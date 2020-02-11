@@ -2,7 +2,7 @@
 name: Request a new title
 about: Request a new title
 title: "[TITLE REQUEST] "
-labels: title-request
+labels: title request
 assignees: ''
 
 ---
