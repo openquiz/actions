@@ -6,14 +6,12 @@ async function run () {
   try {
     const token = core.getInput('github-token', { required: true })
     const client = new github.GitHub(token)
-    console.log(123)
 
     const issue_number = getIssueNumber()
-    console.log(issue_number)
     if (issue_number == null) {
       throw new Error('No Issue Provided')
     }
-
+    console.log(github.context)
     const { data } = await client.issues.get({
       ...getRepo(),
       issue_number
