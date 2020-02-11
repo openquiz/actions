@@ -4,9 +4,11 @@ on:
     types: [labeled]
 
 jobs:
-  triage:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - uses: ./
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      - uses: actions/checkout@v2
+      - run: npm install
+      - uses: ./
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
