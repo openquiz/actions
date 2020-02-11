@@ -7,6 +7,8 @@ async function run () {
     const token = core.getInput('github-token', { required: true })
     const client = new github.GitHub(token)
     const labelGlobs = await getLabelGlobs(client)
+    console.log(labelGlobs)
+
     const labels = []
     for (const [label, globs] of labelGlobs.entries()) {
       core.debug(`processing ${label}`)
@@ -18,9 +20,8 @@ async function run () {
 }
 async function getLabelGlobs (client) {
   const configurationContent = await fetchContent(client)
-  // loads (hopefully) a `{[label:string]: string | string[]}`, but is `any`:
   const configObject = yaml.safeLoad(configurationContent)
-  // transform `any` => `Map<string,string[]>` or throw if yaml is malformed:
+  console.log(configObject)
   return getLabelGlobMapFromObject(configObject)
 }
 async function fetchContent (client) {
