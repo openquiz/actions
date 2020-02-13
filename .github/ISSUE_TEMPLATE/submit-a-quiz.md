@@ -2,7 +2,7 @@
 name: Submit a quiz
 about: Submit a quiz
 title: '[QUIZ] '
-labels: quiz
+labels: 'quiz'
 assignees: ''
 
 ---
@@ -17,5 +17,7 @@ choice: # Required if quiz type is choice
   - [CHOICE C]
   - [CHOICE D]
 answer: [ANSWER_IN_FULL_TEXT] # Only one answer is allowed currently
-author: [YOUR_NAME]
-author_link: [YOUR_LINK]
+explanation: [TEXT] # Optional
+related_episodes: # Optional
+  - [EPISODE 1]
+  - [EPISODE 2]

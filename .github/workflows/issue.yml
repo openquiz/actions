@@ -1,7 +1,7 @@
 name: "Issue Actions"
 on:
   issues:
-    types: [opened, edited, labeled]
+    types: [labeled, edited]
 
 jobs:
   test:

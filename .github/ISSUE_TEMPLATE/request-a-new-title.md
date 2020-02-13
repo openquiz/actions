@@ -1,8 +1,8 @@
 ---
 name: Request a new title
 about: Request a new title
-title: "[TITLE REQUEST] "
-labels: title request
+title: "[REQUEST] "
+labels: 'title request'
 assignees: ''
 
 ---
