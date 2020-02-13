@@ -4,6 +4,8 @@ const { quizSchema } = require('../config/schema')
 
 const handleIssueLabeled = async function (payload, client) {
   const issue = payload.issue
+  console.log(issue)
+  console.log(config.labels.quiz)
 
   if (issue.labels.includes(config.labels.quiz)) {
     const newQuiz = yaml.safeLoad(issue.body)
