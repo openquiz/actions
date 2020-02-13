@@ -23,7 +23,9 @@ const quizSchema = Joi.object({
       otherwise: Joi.string().required()
     }),
   author: Joi.string(),
-  author_link: Joi.string()
+  author_link: Joi.string(),
+  explanation: Joi.string(),
+  related_episodes: Joi.array().items(Joi.string())
 })
 
 module.exports = {
