@@ -24,8 +24,8 @@ const handleIssueLabeled = async function (payload, client) {
     if (validateResult.error) {
       const validateErrorComment = `Error: \`${validateResult.error.details[0].message}\`. Please edit issue content.`
       await client.issues.createComment({
-        owner: issue.owner,
-        repo: issue.repo,
+        owner: payload.organization.login,
+        repo: payload.repository.name,
         issue_number: issue.number,
         body: validateErrorComment
       })
