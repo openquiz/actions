@@ -7,7 +7,12 @@ const handleIssueLabeled = async function (payload, client) {
   console.log(issue)
   console.log(config.labels.quiz)
 
-  if (issue.labels.includes(config.labels.quiz)) {
+  const labels = []
+  issue.labels.forEach(function (obj) {
+    labels.push(obj.name)
+  })
+
+  if (labels.includes(config.labels.quiz)) {
     const newQuiz = yaml.safeLoad(issue.body)
 
     if (newQuiz.type === 'number' && newQuiz.anwser) {
