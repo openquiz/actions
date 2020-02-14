@@ -12,7 +12,7 @@ const handleIssueLabeled = async function (payload, client) {
 
   // Issues with 'quiz' label
   if (labels.includes(config.labels.quiz)) {
-    const newQuiz = formatQuiz(issue.body, payload.sender)
+    const newQuiz = formatQuiz(issue, payload.sender)
     const validateResult = quizSchema.validate(newQuiz)
     if (validateResult.error) {
       const validateErrorComment = `Error: \`${validateResult.error.details[0].message}\`. Please edit the issue content.`
