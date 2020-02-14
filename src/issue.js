@@ -37,7 +37,7 @@ const handleIssueLabeled = async function (payload, client) {
 
   // Issues with 'READY' label
   if (labels.includes(config.labels.ready)) {
-    const newQuiz = formatQuiz(issue.body, payload.sender)
+    const newQuiz = formatQuiz(issue, payload.sender)
     await client.repos.createOrUpdateFile({
       owner: config.project.owner,
       repo: config.project.repo,

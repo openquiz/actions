@@ -16,13 +16,14 @@ const getAssignees = function (title) {
   return assignees
 }
 
-const formatQuiz = function (body, sender) {
-  const newQuiz = yaml.safeLoad(body)
+const formatQuiz = function (issue, sender) {
+  const newQuiz = yaml.safeLoad(issue.body)
   if (!newQuiz) return null
 
   newQuiz.id = getIdByTitle(newQuiz.title)
-  newQuiz.created_at = body.created_at
-  newQuiz.updated_at = body.updated_at
+  newQuiz.issue_number = issue.number
+  newQuiz.created_at = issue.created_at
+  newQuiz.updated_at = issue.updated_at
 
   if (newQuiz.type === 'number' && newQuiz.anwser) {
     newQuiz.anwser = Number(newQuiz.anwser)
