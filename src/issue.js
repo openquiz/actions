@@ -4,7 +4,6 @@ const { getIdByTitle, getAssignees, formatQuiz } = require('./util')
 
 const handleIssueLabeled = async function (payload, client) {
   const issue = payload.issue
-  console.log(issue)
 
   const labels = issue.labels.map(function (obj) {
     return obj.name
@@ -45,7 +44,7 @@ const handleIssueLabeled = async function (payload, client) {
       // sha: Required if you are updating a file. The blob SHA of the file being replaced.
       path: `${getIdByTitle(newQuiz.title)}/${issue.issue_number}.json`,
       message: `New quiz for ${newQuiz.title}: #${issue.issue_number}`,
-      content: JSON.stringify(newQuiz, null, 4)
+      content: Buffer.from(JSON.stringify(newQuiz, null, 4)).toString('base64')
     })
   }
 }

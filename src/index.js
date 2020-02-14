@@ -9,7 +9,6 @@ async function run () {
     const token = core.getInput('github-token', { required: true })
     const client = new github.GitHub(token)
     console.log(github.context)
-    console.log(payload.action)
     if (github.context.eventName === 'issues') {
       if (payload.action === 'labeled' || payload.action === 'edited') {
         handleIssueLabeled(payload, client)
