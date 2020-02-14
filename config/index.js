@@ -1,11 +1,13 @@
 const project = {
   owner: 'openquiz',
-  repo: 'openquiz'
+  repo: 'openquiz',
+  patchBranch: 'bot-patch'
 }
 
 const labels = {
   quiz: 'quiz',
-  titleRequest: 'title request'
+  titleRequest: 'title request',
+  ready: 'READY'
 }
 
 const administrator = [

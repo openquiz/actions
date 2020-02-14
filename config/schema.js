@@ -22,10 +22,13 @@ const quizSchema = Joi.object({
       then: Joi.number().required(),
       otherwise: Joi.string().required()
     }),
+  issue_number: Joi.number().integer().required(),
   author: Joi.string(),
   author_link: Joi.string(),
   explanation: Joi.string(),
-  related_episodes: Joi.array().items(Joi.string())
+  related_episodes: Joi.array().items(Joi.string()),
+  created_at: Joi.date().iso().required(),
+  updated_at: Joi.date().iso()
 })
 
 module.exports = {
