@@ -20,7 +20,7 @@ const formatQuiz = function (issue, sender) {
   const newQuiz = yaml.safeLoad(issue.body)
   if (!newQuiz) return null
 
-  newQuiz.id = getIdByTitle(newQuiz.title)
+  newQuiz.title = getIdByTitle(newQuiz.title)
   newQuiz.issue_number = issue.number
   newQuiz.created_at = issue.created_at
   newQuiz.updated_at = issue.updated_at
