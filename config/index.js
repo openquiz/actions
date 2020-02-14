@@ -1,3 +1,8 @@
+const project = {
+  owner: 'openquiz',
+  repo: 'openquiz'
+}
+
 const labels = {
   quiz: 'quiz',
   titleRequest: 'title request'
@@ -12,6 +17,7 @@ const editors = {
 }
 
 module.exports = {
+  project,
   labels,
   administrator,
   editors

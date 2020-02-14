@@ -1,4 +1,5 @@
 const yaml = require('js-yaml')
+const { getAssignees } = require('./util')
 const config = require('../config')
 const { quizSchema } = require('../config/schema')
 
@@ -7,9 +8,8 @@ const handleIssueLabeled = async function (payload, client) {
   console.log(issue)
   console.log(config.labels.quiz)
 
-  const labels = []
-  issue.labels.forEach(function (obj) {
-    labels.push(obj.name)
+  const labels = issue.labels.map(function (obj) {
+    return obj.name
   })
 
   if (labels.includes(config.labels.quiz)) {
@@ -20,14 +20,23 @@ const handleIssueLabeled = async function (payload, client) {
     }
 
     const validateResult = quizSchema.validate(newQuiz)
-    console.log(validateResult)
     if (validateResult.error) {
-      const validateErrorComment = `Error: \`${validateResult.error.details[0].message}\`. Please edit issue content.`
+      const validateErrorComment = `Error: \`${validateResult.error.details[0].message}\`. Please edit the issue content.`
       await client.issues.createComment({
-        owner: payload.organization.login,
-        repo: payload.repository.name,
+        owner: config.project.owner,
+        repo: config.project.repo,
         issue_number: issue.number,
         body: validateErrorComment
+      })
+    } else {
+      // assign issue to editors or administrators
+      const assignees = getAssignees(newQuiz.title)
+
+      await client.issues.addAssignees({
+        owner: config.project.owner,
+        repo: config.project.repo,
+        issue_number: issue.number,
+        assignees
       })
     }
   }
