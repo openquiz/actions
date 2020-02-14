@@ -45,7 +45,7 @@ const handleIssueLabeled = async function (payload, client) {
       // sha: Required if you are updating a file. The blob SHA of the file being replaced.
       path: `${getIdByTitle(newQuiz.title)}/${issue.issue_number}.json`,
       message: `New quiz for ${newQuiz.title}: #${issue.issue_number}`,
-      content: newQuiz
+      content: JSON.stringify(newQuiz, null, 4)
     })
   }
 }
