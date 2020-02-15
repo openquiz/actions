@@ -37,14 +37,23 @@ const handleIssueLabeled = async function (payload, client) {
   // Issues with 'READY' label
   if (labels.includes(config.labels.ready)) {
     const newQuiz = formatQuiz(issue, payload.sender)
+    const commitTitle = `New quiz for ${newQuiz.title}: #${issue.number}`
     await client.repos.createOrUpdateFile({
       owner: config.project.owner,
       repo: config.project.repo,
       branch: config.project.patchBranch,
       // sha: Required if you are updating a file. The blob SHA of the file being replaced.
       path: `${getIdByTitle(newQuiz.title)}/${issue.number}.json`,
-      message: `New quiz for ${newQuiz.title}: #${issue.number}`,
+      message: commitTitle,
       content: Buffer.from(JSON.stringify(newQuiz, null, 4)).toString('base64')
+    })
+
+    await client.pulls.create({
+      owner: config.project.owner,
+      repo: config.project.repo,
+      title: commitTitle,
+      head: config.project.patchBranch,
+      base: config.project.masterBranch
     })
   }
 }

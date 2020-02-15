@@ -1,7 +1,8 @@
 const project = {
   owner: 'openquiz',
   repo: 'openquiz',
-  patchBranch: 'bot-patch'
+  patchBranch: 'bot-patch',
+  masterBranch: 'master'
 }
 
 const labels = {
