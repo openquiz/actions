@@ -1,4 +1,4 @@
-[![Status][bender]](https://github.com/openquiz/actions)
+[![Status][issueactions]](https://github.com/openquiz/actions)
 
 # Open Quiz Actions
 
@@ -52,4 +52,4 @@ $ git tag -a -m "new release" vX.X.X
 $ git push origin release/vX.X.X
 ```
 
-[bender]: https://github.com/openquiz/actions/workflows/Bender/badge.svg
+[issueactions]: https://github.com/openquiz/actions/workflows/Issue%20Actions/badge.svg
