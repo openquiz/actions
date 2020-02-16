@@ -11,12 +11,7 @@ const labels = {
   ready: 'READY'
 }
 
-const administrators = core.getInput('administrators', { required: true })
-const editors = core.getInput('editors', { required: true })
-
 module.exports = {
   project,
-  labels,
-  administrators,
-  editors
+  labels
 }

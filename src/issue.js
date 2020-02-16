@@ -16,7 +16,7 @@ const handleIssueLabeled = async function (payload, client) {
     if (validateResult.error) {
       const validateErrorComment = `Error: \`${validateResult.error.details[0].message}\`. Please edit the issue content.`
       await client.issues.createComment({
-        owner: payload.repository.owner.name,
+        owner: payload.repository.owner.login,
         repo: payload.repository.name,
         issue_number: issue.number,
         body: validateErrorComment
@@ -26,7 +26,7 @@ const handleIssueLabeled = async function (payload, client) {
       const assignees = getAssignees(newQuiz.title)
 
       await client.issues.addAssignees({
-        owner: payload.repository.owner.name,
+        owner: payload.repository.owner.login,
         repo: payload.repository.name,
         issue_number: issue.number,
         assignees
@@ -39,7 +39,7 @@ const handleIssueLabeled = async function (payload, client) {
     const newQuiz = formatQuiz(issue, payload.sender)
     const commitTitle = `New quiz for ${newQuiz.title}: #${issue.number}`
     await client.repos.createOrUpdateFile({
-      owner: payload.repository.owner.name,
+      owner: payload.repository.owner.login,
       repo: payload.repository.name,
       branch: config.project.patchBranch,
       // sha: Required if you are updating a file. The blob SHA of the file being replaced.
@@ -49,7 +49,7 @@ const handleIssueLabeled = async function (payload, client) {
     })
 
     await client.pulls.create({
-      owner: payload.repository.owner.name,
+      owner: payload.repository.owner.login,
       repo: payload.repository.name,
       head: config.project.patchBranch,
       base: config.project.masterBranch,
