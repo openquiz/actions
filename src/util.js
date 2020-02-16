@@ -16,6 +16,7 @@ const getAssignees = function (title) {
   }
 
   assignees = assignees.map(p => p.trim())
+
   return assignees
 }
 
@@ -33,8 +34,8 @@ const formatQuiz = function (issue, sender) {
   }
 
   if (sender) {
-    newQuiz.author = sender.login
-    newQuiz.author_link = sender.html_url
+    newQuiz.author = issue.user.login
+    newQuiz.author_link = issue.user.html_url
   }
 
   return newQuiz
