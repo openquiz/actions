@@ -17,13 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm install
       - uses: openquiz/actions@v1.0.0
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           patch-branch: "bot-patch"
-          administrators: "[username1, username2]"
-          editors-friends: "[username1, username2]"
+          administrators: "username1, username2"
+          editors-friends: "username1, username2"
 ```
 
 # Upgrading this package

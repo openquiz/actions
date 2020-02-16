@@ -7,12 +7,15 @@ const getIdByTitle = function (title) {
 
 const getAssignees = function (title) {
   const id = getIdByTitle(title)
-  let assignees = JSON.parse(core.getInput(`editors-${id}`, { required: true }) || [])
+  const editorInput = core.getInput(`editors-${id}`)
+  let assignees = editorInput ? editorInput.splice(',') : []
 
   if (!assignees.length) {
-    assignees = JSON.parse(core.getInput('administrators', { required: true }))
+    const administratorsInput = core.getInput('administrators', { required: true })
+    assignees = administratorsInput.splice(',')
   }
 
+  assignees = assignees.map(p => p.trim())
   return assignees
 }
 
