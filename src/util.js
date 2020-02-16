@@ -1,5 +1,5 @@
+const core = require('@actions/core')
 const yaml = require('js-yaml')
-const config = require('../config')
 
 const getIdByTitle = function (title) {
   return title.toLowerCase()
@@ -7,10 +7,10 @@ const getIdByTitle = function (title) {
 
 const getAssignees = function (title) {
   const id = getIdByTitle(title)
-  let assignees = config.editors[id] || []
+  let assignees = core.getInput(`editors-${id}`, { required: true }) || []
 
   if (!assignees.length) {
-    assignees = config.administrators
+    assignees = core.getInput('administrators', { required: true })
   }
 
   return assignees
