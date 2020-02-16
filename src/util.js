@@ -8,11 +8,11 @@ const getIdByTitle = function (title) {
 const getAssignees = function (title) {
   const id = getIdByTitle(title)
   const editorInput = core.getInput(`editors-${id}`)
-  let assignees = editorInput ? editorInput.splice(',') : []
+  let assignees = editorInput ? editorInput.split(',') : []
 
   if (!assignees.length) {
     const administratorsInput = core.getInput('administrators', { required: true })
-    assignees = administratorsInput.splice(',')
+    assignees = administratorsInput.split(',')
   }
 
   assignees = assignees.map(p => p.trim())
