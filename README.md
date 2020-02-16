@@ -42,11 +42,11 @@ Commentout the following lines in `.gitignore`
 ```
 # comment this out distribution branches
 node_modules/
-lib
 ```
 
 ```
 $ git add node_modules
+$ git rm -r friends ...
 $ git commit -a -m "release"
 $ git tag -a -m "new release" vX.X.X
 $ git push origin release/vX.X.X
