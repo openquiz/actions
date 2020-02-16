@@ -7,10 +7,10 @@ const getIdByTitle = function (title) {
 
 const getAssignees = function (title) {
   const id = getIdByTitle(title)
-  let assignees = core.getInput(`editors-${id}`, { required: true }) || []
+  let assignees = JSON.parse(core.getInput(`editors-${id}`, { required: true }) || [])
 
   if (!assignees.length) {
-    assignees = core.getInput('administrators', { required: true })
+    assignees = JSON.parse(core.getInput('administrators', { required: true }))
   }
 
   return assignees
