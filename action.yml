@@ -4,6 +4,13 @@ author: 'Leplay'
 inputs:
   github-token:
     description: 'The GITHUB_TOKEN secret'
+  patch-branch:
+    description: 'Patch branch'
+  administrators:
+    description: 'Administrators'
+  editors:
+    description: 'Editors'
+
 runs:
   using: 'node12'
   main: 'src/index.js'

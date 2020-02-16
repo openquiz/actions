@@ -1,8 +1,8 @@
+const core = require('@actions/core')
+
 const project = {
-  owner: 'openquiz',
-  repo: 'openquiz',
-  patchBranch: 'bot-patch',
-  masterBranch: 'master'
+  masterBranch: 'master',
+  patchBranch: core.getInput('patchBranch') || 'bot-patch'
 }
 
 const labels = {
@@ -11,17 +11,12 @@ const labels = {
   ready: 'READY'
 }
 
-const administrator = [
-  'leplay'
-]
-
-const editors = {
-  friends: []
-}
+const administrators = core.getInput('administrators', { required: true })
+const editors = core.getInput('editors', { required: true })
 
 module.exports = {
   project,
   labels,
-  administrator,
+  administrators,
   editors
 }

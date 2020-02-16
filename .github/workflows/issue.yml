@@ -4,7 +4,7 @@ on:
     types: [labeled, edited]
 
 jobs:
-  test:
+  Bender:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -12,3 +12,10 @@ jobs:
       - uses: ./
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
+          patch-branch: 'bot-patch'
+          administrators:
+            - leplay
+          editors:
+            friends:
+              - nicing
+

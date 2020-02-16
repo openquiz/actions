@@ -10,7 +10,7 @@ const getAssignees = function (title) {
   let assignees = config.editors[id] || []
 
   if (!assignees.length) {
-    assignees = config.administrator
+    assignees = config.administrators
   }
 
   return assignees
