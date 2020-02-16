@@ -48,7 +48,7 @@ $ git add node_modules
 $ git rm -r friends ...
 $ git commit -a -m "release"
 $ git tag -a -m "new release" vX.X.X
-$ git push origin release/vX.X.X
+$ git push --follow-tag origin release/vX.X.X
 ```
 
 [issueactions]: https://github.com/openquiz/actions/workflows/Issue%20Actions/badge.svg
