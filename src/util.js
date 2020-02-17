@@ -2,7 +2,7 @@ const core = require('@actions/core')
 const yaml = require('js-yaml')
 
 const getIdByTitle = function (title) {
-  return title.toLowerCase()
+  return title.replace(/\W+/g, '-').toLowerCase()
 }
 
 const getAssignees = function (title) {
