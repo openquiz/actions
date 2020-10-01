@@ -21,7 +21,7 @@
   "author": "leplay (https://github.com/leplay)",
   "license": "GPL-3.0",
   "dependencies": {
-    "@actions/core": "1.0.0",
+    "@actions/core": "1.2.6",
     "@actions/github": "1.0.0",
     "@hapi/joi": "^17.1.0",
     "js-yaml": "^3.13.1",
